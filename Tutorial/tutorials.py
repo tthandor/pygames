@@ -30,5 +30,5 @@ while True:
     screen.blit(text_surface, (140, 150))
 
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(const.CLOCK_TICK)
 
