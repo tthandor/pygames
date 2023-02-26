@@ -10,8 +10,13 @@ test_font = pygame.font.Font("Text/Grand9K Pixel.ttf", 100)
 w = 100
 h = 200
 
-background_surface = pygame.image.load("Images/cep.png")
-text_surface = test_font.render('Chill', True, 'White')
+text_surface = test_font.render('Some title', True, 'White')
+
+background_surface = pygame.image.load("Images/cep.png").convert()
+
+bird_surface = pygame.image.load("Images/bird.png").convert_alpha()
+bird_x = 30
+bird_y = 30
 
 while True:
     for event in pygame.event.get():
@@ -20,7 +25,11 @@ while True:
             exit()  # needed as when we close the game, we want to end the while loop as well
 
     screen.blit(background_surface, (0, 0))
-    screen.blit(text_surface, (300, 150))
+    bird_x += 4
+    if bird_x > 794:
+        bird_x = 0
+    screen.blit(bird_surface, (bird_x, bird_y))
+    screen.blit(text_surface, (140, 150))
 
     pygame.display.update()
     clock.tick(60)
